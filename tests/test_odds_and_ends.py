@@ -15,7 +15,9 @@ def test_odds_and_ends(
     strategist_ms,
     pid,
     masterchef,
-    Strategy0xDAOStaker,
+    emissionToken,
+    GenericMasterChefStrategy,
+    wftm,
     amount,
     strategy_name,
 ):
@@ -52,10 +54,14 @@ def test_odds_and_ends(
     # we can try to migrate too, lol
     # deploy our new strategy
     new_strategy = strategist.deploy(
-        Strategy0xDAOStaker,
+        GenericMasterChefStrategy,
         vault,
         pid,
         strategy_name,
+        masterchef,
+        emissionToken,
+        wftm,
+        True
     )
     total_old = strategy.estimatedTotalAssets()
 
@@ -145,7 +151,7 @@ def test_odds_and_ends_2(
 
 
 def test_odds_and_ends_migration(
-    Strategy0xDAOStaker,
+    GenericMasterChefStrategy,
     gov,
     token,
     vault,
@@ -158,6 +164,8 @@ def test_odds_and_ends_migration(
     amount,
     strategy_name,
     masterchef,
+    emissionToken,
+    wftm,
     pid,
 ):
 
@@ -171,10 +179,14 @@ def test_odds_and_ends_migration(
 
     # deploy our new strategy
     new_strategy = strategist.deploy(
-        Strategy0xDAOStaker,
+        GenericMasterChefStrategy,
         vault,
         pid,
         strategy_name,
+        masterchef,
+        emissionToken,
+        wftm,
+        True
     )
     total_old = strategy.estimatedTotalAssets()
 

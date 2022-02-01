@@ -12,9 +12,11 @@ def test_cloning(
     keeper,
     rewards,
     chain,
-    Strategy0xDAOStaker,
+    GenericMasterChefStrategy,
     guardian,
     amount,
+    emissionToken,
+    wftm,
     pid,
     masterchef,
     strategy_name,
@@ -28,6 +30,11 @@ def test_cloning(
             keeper,
             pid,
             strategy_name,
+            masterchef,
+            emissionToken,
+            wftm,
+            True,
+
             {"from": gov},
         )
 
@@ -41,6 +48,10 @@ def test_cloning(
             keeper,
             wrong_pid,
             strategy_name,
+            masterchef,
+            emissionToken,
+            wftm,
+            True,
             {"from": gov},
         )
 
@@ -52,9 +63,13 @@ def test_cloning(
         keeper,
         pid,
         strategy_name,
+        masterchef,
+            emissionToken,
+            wftm,
+            True,
         {"from": gov},
     )
-    newStrategy = Strategy0xDAOStaker.at(tx.return_value)
+    newStrategy = GenericMasterChefStrategy.at(tx.return_value)
 
     # Shouldn't be able to call initialize again
     with brownie.reverts():
@@ -65,6 +80,10 @@ def test_cloning(
             keeper,
             pid,
             strategy_name,
+            masterchef,
+            emissionToken,
+            wftm,
+            True,
             {"from": gov},
         )
 
@@ -77,6 +96,10 @@ def test_cloning(
             keeper,
             pid,
             strategy_name,
+            masterchef,
+            emissionToken,
+            wftm,
+            True,
             {"from": gov},
         )
 
